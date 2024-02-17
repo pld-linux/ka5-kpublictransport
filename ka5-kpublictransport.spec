@@ -1,28 +1,28 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.4
+%define		kdeappsver	24.01.95
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kpublictransport
 Summary:	A library for accessing realtime public transport data
 Name:		ka5-%{kaname}
-Version:	23.08.4
-Release:	1
+Version:	24.01.95
+Release:	0.1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	4c15698b177d33549093912d02de676c
+Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	b166b2f863c32e09e4694a7134435c95
 URL:		https://community.kde.org/KDE_PIM/KDE_Itinerary
-BuildRequires:	Qt5Core-devel >= 5.15.2
-BuildRequires:	Qt5Gui-devel >= 5.15.2
-BuildRequires:	Qt5Network-devel >= 5.15.2
-BuildRequires:	Qt5Qml-devel >= 5.15.2
-BuildRequires:	Qt5Quick-devel
-BuildRequires:	kf5-extra-cmake-modules >= 5.91
+BuildRequires:	Qt6Core-devel >= 5.15.2
+BuildRequires:	Qt6Gui-devel >= 5.15.2
+BuildRequires:	Qt6Network-devel >= 5.15.2
+BuildRequires:	Qt6Qml-devel >= 5.15.2
+BuildRequires:	Qt6Quick-devel
+BuildRequires:	kf6-extra-cmake-modules >= 5.91
 BuildRequires:	ninja
 BuildRequires:	polyclipping-devel
-BuildRequires:	qt5-build >= %{qtver}
+BuildRequires:	qt6-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -88,21 +88,27 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.md
 %ghost %{_libdir}/libKPublicTransport.so.1
-%attr(755,root,root) %{_libdir}/libKPublicTransport.so.*.*.*
-%dir %{_libdir}/qt5/qml/org/kde/kpublictransport
-%attr(755,root,root) %{_libdir}/qt5/qml/org/kde/kpublictransport/libkpublictransportqmlplugin.so
-%{_libdir}/qt5/qml/org/kde/kpublictransport/qmldir
-%dir %{_libdir}/qt5/qml/org/kde/kpublictransport/ui
-%{_libdir}/qt5/qml/org/kde/kpublictransport/ui/VehicleSectionItem.qml
-%attr(755,root,root) %{_libdir}/qt5/qml/org/kde/kpublictransport/ui/libkpublictransportquickplugin.so
-%{_libdir}/qt5/qml/org/kde/kpublictransport/ui/qmldir
-%{_datadir}/qlogging-categories5/org_kde_kpublictransport.categories
+%attr(755,root,root) %{_libdir}/libKPublicTransport.so.*.*
 %ghost %{_libdir}/libKPublicTransportOnboard.so.1
-%attr(755,root,root) %{_libdir}/libKPublicTransportOnboard.so.*.*.*
-%dir %{_libdir}/qt5/qml/org/kde/kpublictransport/onboard
-%attr(755,root,root) %{_libdir}/qt5/qml/org/kde/kpublictransport/onboard/libkpublictransportonboardqmlplugin.so
-%{_libdir}/qt5/qml/org/kde/kpublictransport/onboard/qmldir
-%{_datadir}/qlogging-categories5/org_kde_kpublictransport_onboard.categories
+%attr(755,root,root) %{_libdir}/libKPublicTransportOnboard.so.*.*
+%dir %{_libdir}/qt6/qml/org/kde/kpublictransport
+%{_libdir}/qt6/qml/org/kde/kpublictransport/kde-qmlmodule.version
+%{_libdir}/qt6/qml/org/kde/kpublictransport/kpublictransportqmlplugin.qmltypes
+%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/kpublictransport/libkpublictransportqmlplugin.so
+%dir %{_libdir}/qt6/qml/org/kde/kpublictransport/onboard
+%{_libdir}/qt6/qml/org/kde/kpublictransport/onboard/kde-qmlmodule.version
+%{_libdir}/qt6/qml/org/kde/kpublictransport/onboard/kpublictransportonboardqmlplugin.qmltypes
+%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/kpublictransport/onboard/libkpublictransportonboardqmlplugin.so
+%{_libdir}/qt6/qml/org/kde/kpublictransport/onboard/qmldir
+%{_libdir}/qt6/qml/org/kde/kpublictransport/qmldir
+%dir %{_libdir}/qt6/qml/org/kde/kpublictransport/ui
+%{_libdir}/qt6/qml/org/kde/kpublictransport/ui/VehicleSectionItem.qml
+%{_libdir}/qt6/qml/org/kde/kpublictransport/ui/kde-qmlmodule.version
+%{_libdir}/qt6/qml/org/kde/kpublictransport/ui/kpublictransportquickplugin.qmltypes
+%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/kpublictransport/ui/libkpublictransportquickplugin.so
+%{_libdir}/qt6/qml/org/kde/kpublictransport/ui/qmldir
+%{_datadir}/qlogging-categories6/org_kde_kpublictransport.categories
+%{_datadir}/qlogging-categories6/org_kde_kpublictransport_onboard.categories
 
 %files devel
 %defattr(644,root,root,755)
